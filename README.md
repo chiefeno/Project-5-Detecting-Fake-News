@@ -2,12 +2,12 @@
 This project was developed by Brian Mendes, Johann Baydeer, and Elliot Richardson. Please see the individual notebooks to follow our processes.
 
 ## Table of contents
-[Background](#Background)
-[Datasets used](#Datasets)
-[Processing](#Processing)
-[Feature engineering](#Feature-engineering-experiments)
-[Exploratory analysis](#Exploratory-analysis)
-[Modeling](#Modeling)
+### I. [Background](#Background)
+### II. [Datasets used](#Datasets)
+### III. [Processing](#Processing)
+### IV. [Feature engineering](#Feature-engineering-experiments)
+### V. [Exploratory analysis](#Exploratory-analysis)
+### VI.[Modeling](#Modeling)
 
 ## Background
 
@@ -100,6 +100,7 @@ See below for a more detailed breakdown of all the above columns save the fifth 
 
 Libraries necessary for this section: 
 
+```
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -111,7 +112,7 @@ from nltk.tag import pos_tag
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-
+```
 [Cleaning](./code/I-Cleaning.ipynb)
 
 The datasets comprised two csv files - one for real news and one for fake news. The goal of this notebook was to compile the data into one dataframe and clean it. The text was divided into one column for headlines called 'title' and one column for the article text called 'text'. The 'subject' column categorized the news into generic categorizes, such as politics news and world news. The 'date' column showed the date the article was posted online. 
@@ -153,11 +154,13 @@ We thought it might be interesting to create clusters of articles using an unsup
 ## [Exploratory analysis](./code/V-EDA.ipynb)
 
 Libraries necessary for this section:
+```
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import sparse
 from wordcloud import WordCloud, STOPWORDS
+```
 
 The exploratory data analysis was done in four parts: Length and word count,
 Sentiment analysis, part of speech analysis and the most frequently used word in both fake and real news. The aim was to have a general view of the entire data frame and compare both classes, understand the major differences between the two and have a general idea of how the modeling process was going to be.
@@ -170,6 +173,7 @@ For the fake news articles, the most recurrent word was “trump” and “said�
 ## [Modeling](./code/VI-Modeling.ipynb)
 
 Libraries necessary for this section:
+```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -183,12 +187,13 @@ from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.model_selection import cross_val_score, train_test_split, GridSearchCV
 
-# Boosting
-
 from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier, VotingClassifier, BaggingClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.pipeline import Pipeline
+```
 
+
+# Boosting
 
 The main challenge with Logistic Regression Classification is a high variance and thus overfit models. The table below shows the training and testing accuracy and cross val scores for each model. The first two model scores are essentially perfect at 99%+. The confusion matrix for each model showed an immaterial amount of false positives and negatives, less than 1%. I decided to use regularization to address the overfit models. 
 
