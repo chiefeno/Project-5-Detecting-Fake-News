@@ -113,7 +113,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 ```
-[Cleaning](./code/I-Cleaning.ipynb)
+### a. [Cleaning](./code/I-Cleaning.ipynb)
 
 The datasets comprised two csv files - one for real news and one for fake news. The goal of this notebook was to compile the data into one dataframe and clean it. The text was divided into one column for headlines called 'title' and one column for the article text called 'text'. The 'subject' column categorized the news into generic categorizes, such as politics news and world news. The 'date' column showed the date the article was posted online. 
 
@@ -128,26 +128,25 @@ Next, we did a train/test split. This was necessary due to the large file size w
 
 Last step was saving the train/test data frames to csv files 
 
-[Sentiment analysis](./code/II-Sentiment-and-POS-Tagging.ipnyb)
+### b. [Sentiment analysis](./code/II-Sentiment-and-POS-Tagging.ipnyb)
 
 In order to generate sentiment scores for the titles and text of each article, we employed vader.Sentiment’s SentimentIntensityAnalyzer. We looped through each row of data, used the SentimentIntensityAnalyzer to generate scores, and inserted those sentiment scores into new columns separated out by text, title, and each sentiment type (positive, negative, neutral, and compound). These scores were used as features in the final classification model.
 
-[Part of speech tagging](./code/II-Sentiment-and-POS-Tagging.ipnyb)
+### c. [Part of speech tagging](./code/II-Sentiment-and-POS-Tagging.ipnyb)
 
 We used the part of speech tagging extraction features to analyze and compare the syntax of real news and fake news articles.  The sentences of all articles were split by words and assigned a tag corresponding to their grammatical category. Then, a ratio was calculated based on the frequency or reoccurrence of those tags in each sentence. Columns were created for each part of speech tags and their ratios.  When we compared the scores of each POS tag for the real news and fake news articles, the differences were not substantial. Fake news articles used more adverbs, more interjection and more symbols but overall the scores were pretty closed. The part of speech analysis didn’t highlight any major differences but these features can still be useful for the models.
 
-
-[Words as features](./code/III-Selecting-Words-as-Features.ipnyb)
+### d. [Words as features](./code/III-Selecting-Words-as-Features.ipnyb)
 
 In order to find the most important words used in these articles, we started by concatenating the titles with their corresponding text, vectorizing these combined texts with sklearn’s CountVectorizer, and creating new strings where all of the words had been replaced with their stems (as created by nltk’s PorterStemmer). We then utilized the CountVectorizer again to create a dataframe that contained the frequency of use for each stem. In order to narrow this extremely large dataframe down to the most significant words, we utilized sklearn’s TfidfVectorizer, which we used to create a dataframe with “importance” scores for each stem. We narrowed the stems to only those who had an importance score above 0.01 for either real or fake news and narrowed our stem frequency dataframe down to those 577 words.
 
 ## Feature engineering experiments
 
-[Time series](./code/IVa-Time-Series-Experiment.ipynb)
+### a. [Time series](./code/IVa-Time-Series-Experiment.ipynb)
 
 The idea behind this analysis was to determine if we could forecast fake news. The dataset has news articles organized by the date of publication and the target would be the mean of news articles per day. Real news was assigned a value of 1 and fake news a value of 0. After preprocessing the data, grouping it into a daily index, and plotting a time series, it became clear that we were operating under flawed logic. The time series line did not show an objective measurement, such as the closing price of a stock, but rather showed the number of news articles gathered each day. All trends in the data could be explained by data scraping. Since Kaggle did not provide a data dictionary, we do not know how the data was collected. The first 6 months of the data set shows only fake news. This was a red flag that the data would not be reliable for a time series model. The absence of real news for the first 6 months of samples must be a result of data scraping.
 
-[Clustering](./code/IVa-Clustering-Experiment.ipynb)
+### b. [Clustering](./code/IVa-Clustering-Experiment.ipynb)
 
 We thought it might be interesting to create clusters of articles using an unsupervised model and then utilizing those cluster labels as features in our final classification model. However, upon modeling, it did not seem feasible. We utilized the DBSCAN clustering model and tested out many combinations of `eps` and `min_samples`, but though there was minimal noise and fairly high silhouette scores, we weren’t able to find a combination that produced balanced classes. Approximately 90-95% of the data was usually grouped into a single cluster while several hundred were spread out among the other two or three clusters, so we decided to scrap the idea.
 
