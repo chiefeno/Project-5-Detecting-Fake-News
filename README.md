@@ -191,9 +191,6 @@ from sklearn.metrics import confusion_matrix
 from sklearn.pipeline import Pipeline
 ```
 
-
-# Boosting
-
 The main challenge with Logistic Regression Classification is a high variance and thus overfit models. The table below shows the training and testing accuracy and cross val scores for each model. The first two model scores are essentially perfect at 99%+. The confusion matrix for each model showed an immaterial amount of false positives and negatives, less than 1%. I decided to use regularization to address the overfit models. 
 
 | Model                                        | Accuracy Score - Train | Accuracy Score - Test | CrossValScore - Train | CrossValScore - Test |
@@ -207,6 +204,7 @@ Regularization does not improve the performance on the data set that the model u
 
 Regularizing the logistic regression model adds bias but not too much bias. The testing cross val score of 86% is significantly better than the baseline score of 53%. While I would like the training and testing cross val score to be closer than the current 7 point spread it is the lesser of two evils when compared to the other overfit models. Additionally, the regularized model has a high testing accuracy score of 94%.
 
+![Logreg - Normalized Confusion Matrix](./charts/logreg_norm_confmat.png)
 
 11% of the data is classified as false negatives (predicted fake news but it was real), while only 1% is classified as false positives (predicted real news but it was fake). It's hard to determine which error is worse. Is it better to be more skeptical and to categorize real news as fake or be more open to information and categorize more fake news as real? The preference would depend on the reader and the circumstances of the information. This model can be viewed as being more skeptical with a strong fake news filter.
 
