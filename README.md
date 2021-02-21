@@ -7,7 +7,8 @@ This project was developed by Brian Mendes, Johann Baydeer, and Elliot Richardso
 ### III. [Processing](#Processing)
 ### IV. [Feature engineering](#Feature-engineering-experiments)
 ### V. [Exploratory analysis](#Exploratory-analysis)
-### VI.[Modeling](#Modeling)
+### VI. [Modeling](#Modeling)
+### VII. [Conclusion](#Conclusion)
 
 ## Background
 
@@ -213,6 +214,6 @@ We also created a Random Forest Model and a Random Forest with AdaBoost Model. E
 
 ## Conclusion
 
-In the end, we were able to create a highly accurate classification model to differentiate between real and fake news. We are skeptical that we'd get similar results when applied to news stories from outside of this Kaggle dataset but believe we found some significant patterns nonetheless. This bodes well for social media platforms where news articles are shared prolifically; with more time and subject matter expertise, we blieve machine learning can be an incredible tool in the battle against misinformation. 
+In the end, we were able to create a highly accurate classification model to differentiate between real and fake news. We are skeptical that we'd get similar results when applied to news stories from outside of this Kaggle dataset but believe we found some significant patterns nonetheless. This bodes well for social media platforms where news articles are shared prolifically; with more time and subject matter expertise, we believe machine learning can be an incredible tool in the battle against misinformation. 
 
 
