@@ -211,7 +211,8 @@ Regularizing the logistic regression model adds bias but not too much bias. The 
 We also created a Random Forest Model and a Random Forest with AdaBoost Model. Each of these models suffered from high variance and were overfit to the training data, scoring a perfect near perfect accuracy score. As a result, we did not use these models for our evaluation. 
 
 
+## Conclusion
 
-
+In the end, we were able to create a highly accurate classification model to differentiate between real and fake news. We are skeptical that we'd get similar results when applied to news stories from outside of this Kaggle dataset but believe we found some significant patterns nonetheless. This bodes well for social media platforms where news articles are shared prolifically; with more time and subject matter expertise, we blieve machine learning can be an incredible tool in the battle against misinformation. 
 
 
